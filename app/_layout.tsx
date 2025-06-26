@@ -8,6 +8,7 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 
+import Header from "@/components/ui/Header";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
 export default function RootLayout() {
@@ -26,6 +27,13 @@ export default function RootLayout() {
       {/* <ThemeProvider value={DefaultTheme}> */}
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="new"
+          options={{
+            presentation: "modal",
+            header: () => <Header type="back" />,
+          }}
+        />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
