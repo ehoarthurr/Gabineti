@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   headerTitle: {
-    fontSize: 16,
+    fontSize: 18,
+    fontWeight: "600",
   },
 });
