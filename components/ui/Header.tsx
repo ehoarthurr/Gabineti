@@ -1,6 +1,7 @@
 import { Colors } from "@/constants/Colors";
 // import { useColorScheme } from "@/hooks/useColorScheme";
 import { Ionicons } from "@expo/vector-icons";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
 import { useNavigation } from "expo-router";
 import {
   StyleSheet,
@@ -15,7 +16,9 @@ type Props =
   | { type: "back"; title?: string };
 
 export default function Header({ type = "default", title }: Props) {
-  const navigation = useNavigation();
+  const navigation = useNavigation() as DrawerNavigationProp<
+    Record<string, object | undefined>
+  >;
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme ?? "light"];
 
@@ -36,7 +39,7 @@ export default function Header({ type = "default", title }: Props) {
       edges={["top"]}
       style={[{ backgroundColor: theme.secondary }, styles.headerContainer]}
     >
-      <TouchableOpacity onPress={() => console.log("Menu pressed")}>
+      <TouchableOpacity onPress={() => navigation.openDrawer()}>
         <Ionicons name="menu" size={32} color="#F5F5F5" />
       </TouchableOpacity>
       <Text style={[styles.headerTitle, { color: theme.text }]}>{title}</Text>

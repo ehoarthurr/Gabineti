@@ -43,7 +43,7 @@ export default function HomeScreen() {
         style={[styles.fab, { backgroundColor: theme.tertiary }]}
         onPress={() => {
           // Adicione aqui a ação do botão
-          navigate("../new");
+          navigate("/new");
         }}
       >
         <Ionicons name="add" size={32} color={theme.primary} />

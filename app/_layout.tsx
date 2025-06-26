@@ -4,10 +4,11 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Drawer } from "expo-router/drawer";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 
+import CustomDrawerContent from "@/components/ui/CustomDrawerContent";
 import Header from "@/components/ui/Header";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
@@ -24,18 +25,15 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      {/* <ThemeProvider value={DefaultTheme}> */}
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen
+      <Drawer drawerContent={() => <CustomDrawerContent />}>
+        <Drawer.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Drawer.Screen
           name="new"
           options={{
-            presentation: "modal",
             header: () => <Header type="back" />,
           }}
         />
-        <Stack.Screen name="+not-found" />
-      </Stack>
+      </Drawer>
       <StatusBar style="auto" />
     </ThemeProvider>
   );
